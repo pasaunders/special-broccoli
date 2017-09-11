@@ -5,10 +5,18 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <h1>Dojos</h1>
-        <p>Name: {{ name }}</p>
-        <p>Location: {{ location }}</p>
-        <p>Language: {{ language }}</p>
-        <p>Comment: {{ comment }}</p>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% else %}
+                <h1>Dojos</h1>
+                <p>Name: {{ name }}</p>
+                <p>Location: {{ location }}</p>
+                <p>Language: {{ language }}</p>
+                <p>Comment: {{ comment }}</p>
+            {% endif %}
+        {% endwith %}
     </body>
 </html>
